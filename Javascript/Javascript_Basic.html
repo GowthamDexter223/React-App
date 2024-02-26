@@ -1,0 +1,232 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JavaScript</h1>
+
+    <h2>Counter</h2>
+    <p id="number">0</p>
+    <button type="button" onclick="counter()">Add</button>
+    
+    <label for="textInput">Enter Text:</label>
+    
+    <input type="text" id="textInput" oninput="updateElement(this.value)">
+    
+    <hr>
+
+    <h1 id="timer">Countdown Timer: Loading...</h1>
+
+    <!-- Display element to be updated dynamically -->
+    <p id="displayElement">Text will be displayed here.</p>
+    <script>
+
+        //1. Introduction, Variables:
+        //1. Declare a variable named `name` and assign your name to it.
+        let name = "Gowtham";
+        console.log(name);
+
+        //2. Create a variable `age` and assign your age to it.
+        let age = 25;
+        console.log(age);
+
+        //3. Declare a constant `PI` and assign the value of π (pi) to it.
+        const PI = 3.14;
+        console.log(PI);
+
+        //4. Write a comment explaining the purpose of your code.
+        // Display the Output in Browser
+
+        //5. Combine two variables, `firstName` and `lastName`, and store the result in a variable called `fullName`.
+        let firstName = "Gowtham";
+        let lastName = "Gowtham";
+        let fullName = `${firstName} ${lastName}`
+        console.log(fullName);
+
+        //6. Swap the values of two variables, `a` and `b`, without using a third variable.
+        let a = 5;
+        let b = 10;
+        console.log("Before swapping: a =", a, ", b =", b);
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        console.log("After swapping: a =", a, ", b =", b);
+
+        //7. Use the `typeof` operator to determine the type of a variable named `exampleVar`.
+        let exampleVar = "string";
+        console.log(typeof (exampleVar));
+
+        //8. Create a variable named `isStudent` and assign a boolean value to it.
+        let isStudent = true;
+        console.log(isStudent);
+
+        //9. Declare a variable `myArray` and assign an array with three elements to it.
+        let myArray = ["myArray", 1, "assign"];
+        console.log(myArray);
+
+        //10. Use the `console.log` method to print the value of a variable named `output`.
+        console.log("console.log");
+
+        //2. Datatypes – Number, BigInt, Boolean, null, undefined, strings, objects, arrays:
+        //1. Perform arithmetic operations (addition, subtraction, multiplication) on two number variables.
+        let number1 = 10;
+        let number2 = 20;
+        let addition = number1 + number2;
+        console.log(addition);
+
+        //2. Create a BigInt variable and assign a large integer value to it.
+        let bigIntNumber = BigInt;
+        bigIntNumber = 564564231664264646466246543236454245487623566236262443344634163;
+        console.log(bigIntNumber)
+
+        //3. Declare a boolean variable `isRaining` and assign its value based on the weather.
+        let booleanVariable = Boolean;
+        booleanVariable = 25;
+        console.log(booleanVariable);
+
+        //4. Assign `null` to a variable named `nullVariable`.
+        let nullVariable = null;
+        console.log(nullVariable);
+
+        //5. Create a variable `undefinedVar` without assigning any value to it.
+        let undefinedVar;
+        console.log(undefinedVar);
+
+        //6. Concatenate two strings and store the result in a new variable.
+        let string1 = "Gowtham";
+        let string2 = "Gowtham";
+        let concatenatedString = `${firstName} ${lastName}`
+        console.log(concatenatedString);
+
+        //7. Create an object representing a person with properties like name, age, and address.
+        let person = {
+            name: "Gowtham",
+            age: 22,
+            address: "cbe"
+        }
+        for (const prop in person) {
+            console.log(prop);
+            console.log(person["name"]);
+        }
+        console.log(person);
+
+        //8. Define an array with at least five different data types.
+        let arrayWithDatatypes = ['Gowtham', 10, true, null, NaN]
+        console.log(arrayWithDatatypes);
+
+        //9. Access the second element of an array and store it in a variable.
+        let employeeName = "ArulAthiappan";
+        console.log(employeeName[1]);
+
+        //10. Convert a number to a string and vice versa.
+        let mark = 10;
+        console.log(String(mark));
+
+        let subject = "Maths";
+        console.log(Number(subject));
+
+        //3. Interaction methods:
+        //1. Use `prompt` to ask the user for their name and store it in a variable.    
+        var userName = prompt("What is your name?");
+
+        if (userName !== null) {
+            alert("Hello, " + userName + "! Welcome!");
+        } else {
+            alert("No name entered. Please refresh the page to try again.");
+        }
+
+        //2. Display an alert with a custom message using `alert`.
+        alert("Customer Message");
+
+        //3. Get input from the user using `confirm` and store the result in a variable.
+        var userConfirmation = confirm("Are you sure you want to proceed?");
+
+        if (userConfirmation) {
+            console.log("User confirmed to proceed.");
+        } else {
+            console.log("User canceled the operation.");
+        }
+
+        //4. Use `prompt` to get a number from the user, convert it to a numeric type, and perform an arithmetic operation.
+        var userInput = prompt("Please enter a number:");
+
+        var number = parseFloat(userInput);
+
+        if (!isNaN(number)) {
+            var result = number * 2;
+            console.log("The result of doubling the number " + number + " is: " + result);
+        } else {
+            console.log("Invalid input. Please enter a valid number.");
+        }
+
+        //5. Create a simple webpage with a button, and use `onclick` to trigger a function.
+        //Counter:
+        function counter() {
+            const count = document.getElementById("number");
+            let number = Number(count.innerHTML) + 1;
+            count.innerHTML = number;
+        }
+
+        //6. Use `prompt` to get two numbers from the user and display their sum using an alert.
+        var firstNumber = prompt("Enter the first number:");
+
+        var numberOne = parseFloat(firstNumber);
+
+        var secondNumber = prompt("Enter the second number:");
+
+        var numberTwo = parseFloat(secondNumber);
+
+        var sum = numberOne + numberTwo;
+
+        alert("The sum of " + numberOne + " and " + numberTwo + " is: " + sum);
+
+        //7. Create an input field and use `oninput` to update another element dynamically.
+        function updateElement(value) {
+            var displayElement = document.getElementById("displayElement");
+            displayElement.textContent = value;
+        }
+
+        //8. Ask the user a yes/no question using `confirm` and display the result in the console.
+        var userResponse = confirm("Do you want to proceed?");
+        
+        console.log("User response:", userResponse);
+
+        //9. Use `prompt` to get a string from the user and display it reversed.        
+        var userInput = prompt("Enter a string:");
+
+        var reversedString = "";
+
+        for (var i = userInput.length - 1; i >= 0; i--) {
+            reversedString += userInput[i];
+        }
+
+        alert("Reversed string: " + reversedString);
+
+        //10. Create a countdown timer that starts when the page loads using `setTimeout`.
+        function updateTimer(timeLeft) {
+            var timerElement = document.getElementById("timer");
+            timerElement.textContent = "Countdown Timer: " + timeLeft + " seconds remaining";
+
+            timeLeft--;
+
+            if (timeLeft >= 0) {
+                setTimeout(function() {
+                    updateTimer(timeLeft);
+                }, 1000);
+            } else {
+                timerElement.textContent = "Countdown Timer: Time's up!";
+            }
+        }
+
+        window.onload = function() {
+            var initialTime = 10;
+            updateTimer(initialTime);
+        };
+    </script>
+</body>
+
+</html>
