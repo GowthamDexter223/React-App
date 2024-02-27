@@ -6,18 +6,18 @@ const initialState = {
 }
 
 const cartSlice = createSlice({
-    name : "cart",
+    name: "cart",
     initialState,
     reducers: {
         //Actions:
-        initProducts: (state, action) => {
-            return {...state, products: action.payload }
+        initProducts: (state: any, action: any) => {
+            return { ...state, product: action.payload }
         },
-        addToCart: (state, action) => {
-            
+        addToCart: (state: any, action: any) => {
+            return { ...state, cart: [...state.cart, action.payload] }
         },
-        removeFromCart: (state, action) => {
-
+        removeFromCart: (state: any, action: any) => {
+            return { ...state, cart: state.cart.filter((product: any) => product.id != action.payload) }
         }
     }
 })

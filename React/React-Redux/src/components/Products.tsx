@@ -1,20 +1,36 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { initProducts } from "../features/cartSlice";
+import { Product } from "./Product";
+import { getProducts } from "../features/productsSlice";
 
 export const Products = () => {
 
   const dispatch = useDispatch();
 
-  const products =  useSelector((state) => state?.cart?.products)
+  const {product, status} = useSelector((state) => state?.product)
 
-  console.log(products)
+  const cart = useSelector((state) => state?.cart?.cart)
+
+  //console.log(products)
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then(response => dispatch(initProducts(response.data)));
+    //axios.get("https://fakestoreapi.com/products").then(response => dispatch(initProducts(response.data)));
+    dispatch(getProducts())
   }, [])
+
+  if (status === "loading") {
+    return <h2>Loading...</h2>
+  }
+
+  if (status === "error") {
+    return <h2>Something went wrong</h2>
+  }
   return (
-    <div>Products</div>
+    <div>
+      <h3>Cart:{cart.length}</h3>
+      {product.map((prod: any) => {
+        return <Product key={prod.id} value={prod} />
+      })
+      }</div>
   )
 }
