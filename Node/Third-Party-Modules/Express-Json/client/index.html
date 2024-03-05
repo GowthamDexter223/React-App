@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express API</title>
+</head>
+
+<body>
+    <h1>Express Node</h1>
+
+    <div id="products">
+
+    </div>
+    <script>
+        //getAllProducts();
+
+        getFilteredProducts();
+
+        async function getAllProducts() {
+            try {
+                const response = await fetch("http://localhost:5000/api/v1/products");
+                const result = await response.json();
+                const data = result.data;
+
+                const productsList = data.map((product) => {
+                    return (
+                        `<div>
+                            <div>
+                                <h2>${product.title}</h2>
+                                <h2>${product.description}</h2>
+                                <h2>${product.category}</h2>
+                                <hr/>
+                            </div>
+                        </div>`
+                    )
+                });
+                document.querySelector("#products").innerHTML = productsList.join("");
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        async function getFilteredProducts() {
+            try {
+                const response = await fetch("http://localhost:5000/api/v1/productDetail");
+                const result = await response.json();
+                const data = result.data;
+
+                const productsList = data.map((product) => {
+                    return (
+                        `<div>
+                            <div>
+                                <h2>${product.title}</h2>
+                                <h2>${product.description}</h2>
+                                <h2>${product.category}</h2>
+                                <hr/>
+                            </div>
+                        </div>`
+                    )
+                });
+                document.querySelector("#products").innerHTML = productsList.join("");
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    </script>
+</body>
+
+</html>
