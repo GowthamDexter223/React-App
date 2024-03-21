@@ -7,7 +7,7 @@ export const Products = () => {
 
   const dispatch = useDispatch();
 
-  const {product, status} = useSelector((state) => state?.product)
+  const { product, status } = useSelector((state) => state?.product)
 
   const cart = useSelector((state) => state?.cart?.cart)
 

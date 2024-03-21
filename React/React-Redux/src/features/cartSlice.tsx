@@ -20,7 +20,7 @@ const cartSlice = createSlice({
             return { ...state, cart: state.cart.filter((product: any) => product.id != action.payload) }
         }
     }
-})
+});
 
 export const { initProducts, addToCart, removeFromCart } = cartSlice.actions
 
