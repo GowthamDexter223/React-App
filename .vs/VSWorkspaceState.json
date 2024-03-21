@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\React",
+    "\\React\\React-Redux",
+    "\\React\\React-Redux\\src",
+    "\\React\\React-Redux\\src\\store"
   ],
-  "SelectedNode": "\\E:\\Gowthamrajs\\GitHub\\Training\\React",
+  "SelectedNode": "\\React\\React-Redux\\src\\store\\store.tsx",
   "PreviewInSolutionExplorer": false
 }

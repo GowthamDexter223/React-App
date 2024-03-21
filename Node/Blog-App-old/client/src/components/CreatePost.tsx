@@ -2,19 +2,12 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FileBase64 from "react-file-base64";
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import baseURL from "../api/api";
 
-const UpdatePost = () => {
-  const { id } = useParams();
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/posts/${id}`)
-      .then((res) => setPost(res.data.data))
-      .catch((error) => console.log(error));
-  }, []);
+const CreatePost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: "",
@@ -36,24 +29,24 @@ const UpdatePost = () => {
     e.preventDefault();
     console.log(post);
     const token = JSON.stringify(localStorage?.getItem("token"));
-    const jwt = JSON.parse(atob(token?.split(".")[1]));
+    const jwt = JSON.parse(atob(token.split(".")[1]));
     const userId = jwt.id;
-    console.log(userId);
+    // console.log(userId);
     axios
-      .put(`${baseURL}/posts/${id}`, post, {
+      .post(`${baseURL}/posts/${userId}`, post, {
         headers: {
-          "x-access-token": token,
+          "x-access-token": JSON.parse(token),
         },
       })
       .then((res) => {
         alert(res.data.message);
         navigate("/", { replace: true });
       })
-      .catch((error) => console.log(error.response.data.message._message));
+      .catch((error) => alert(error.response.data.message));
   };
   return (
     <Container>
-      <h2 className="display-3 text-center">Update Post</h2>
+      <h2 className="display-3 text-center">Create Post</h2>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Enter Title</Form.Label>
@@ -110,7 +103,7 @@ const UpdatePost = () => {
           />
         </Form.Group>
         <Button variant="primary" onClick={handleSubmit}>
-          Update Post
+          Create Post
         </Button>{" "}
         <Button variant="secondary">Cancel</Button>{" "}
       </Form>
@@ -118,4 +111,4 @@ const UpdatePost = () => {
   );
 };
 
-export default UpdatePost;
+export default CreatePost;
