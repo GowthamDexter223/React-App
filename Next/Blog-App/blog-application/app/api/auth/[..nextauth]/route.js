@@ -1,0 +1,21 @@
+import NextAuth from "next-auth/next";
+import GoogleProvider from "next-auth/providers/google";
+
+const handler = NextAuth({
+    providers: [
+        GoogleProvider({
+            clientId: "",
+            clientSecret: ""
+        })
+    ],
+    callbacks: {
+        async session({session}) {
+
+        },
+        async profile({profile}) {
+            
+        }
+    }
+});
+
+export default handler;
